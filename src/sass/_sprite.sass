@@ -1,0 +1,29 @@
+$icons: (0:0)
+$icons: map-merge($icons,(bt-next: (X: 0px, Y:0px, W: 39px, H: 41px, TW: 82px, TH: 41px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(bt-prev: (X: -43px, Y:0px, W: 39px, H: 41px, TW: 82px, TH: 41px, IMG: '../img/icons.png')))
+
+
+// Gets an attribute from the sass map
+@function icon-attr($icon, $attr)
+	$icon: map-get($icons, $icon)
+	@return map-get($icon, $attr)
+
+@mixin sprite($iconName)
+	background-image: url(icon-attr($iconName, IMG))
+	width: icon-attr($iconName, W)
+	height: icon-attr($iconName, H)
+	background-position: icon-attr($iconName, X) icon-attr($iconName, Y)
+
+@mixin s($i)
+	+sprite($i)
+
+.icon-bt-next
+	width: 39px
+	height: 41px
+	background-image: url('../img/icons.png')
+	background-position: 0px 0px
+.icon-bt-prev
+	width: 39px
+	height: 41px
+	background-image: url('../img/icons.png')
+	background-position: -43px 0px
