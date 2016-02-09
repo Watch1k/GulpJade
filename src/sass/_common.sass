@@ -1,5 +1,8 @@
 // fonts
 $default-fonts: Arial, sans-serif
+// +font("OpenSans Regular", "OpenSans")
+// =sans-r
+// 	font-family: "OpenSans Regular", $default-fonts
 
 // colors
 
@@ -14,11 +17,15 @@ a
 svg
 	width: 100%
 	height: 100%
+.is-hidden
+	display: none
+.row
+	+pie-clearfix
 body
 	min-width: 320px
 	font-family: $default-fonts
 	font-size: 14px
-	line-height: 1.5
+	line-height: 1.6
 .wrapper
 	overflow: hidden
 	min-height: 100%

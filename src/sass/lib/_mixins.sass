@@ -1,3 +1,8 @@
+// px to em
+$browser-context: 16
+@function em($pixels, $context: $browser-context)
+	@return #{$pixels/$context}em
+
 // clearfix
 =pie-clearfix
 	&:after
@@ -25,8 +30,8 @@
 =font($alias, $name)
 	@font-face
 		font-family: $alias
-		src: url("fonts/" + $name + ".eot")
-		src: url("fonts/" + $name + ".eot?#iefix") format("embedded-opentype"), url("fonts/" + $name + ".woff") format("woff"), url("fonts/" + $name + ".ttf") format("truetype")
+		src: url("../css/fonts/" + $name + ".eot")
+		src: url("../css/fonts/" + $name + ".eot?#iefix") format("embedded-opentype"), url("../css/fonts/" + $name + ".woff") format("woff"), url("../css/fonts/" + $name + ".woff2") format("woff2"), url("../css/fonts/" + $name + ".ttf") format("truetype")
 		font-weight: normal
 		font-style: normal
 // cover
@@ -95,24 +100,32 @@
 // example
 // +arr(500,50, #000, l)
 // +arr(500,50, #000, bl)
-		height: 100%
 
 =vcenter
 	position: absolute
 	top: 50%
 	left: 50%
-	+translate(-50%,-50%)
+	transform: translate(-50%,-50%)
 
 =vertical
-	font-size: 0
+	white-space: nowrap
 	&:before
 		content: ""
 		display: inline-block
 		vertical-align: middle
 		width: 0
 		height: 100%
+		margin-right: -0.25em
 
 =hide-text
 	font: 0/0 a
 	text-shadow: none
 	color: transparent
+=hidetext
+	+hide-text
+
+=text-overflow
+	overflow: hidden
+	-ms-text-overflow: ellipsis
+	text-overflow: ellipsis
+	white-space: nowrap
