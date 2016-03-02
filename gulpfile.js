@@ -15,6 +15,7 @@ var gulp = require('gulp'),
     htmlhint = require("gulp-htmlhint"),
     cmq = require('gulp-combine-mq'),
     zip = require('gulp-zip'),
+    htmlbeautify = require('gulp-html-beautify'),
     reload = browserSync.reload;
 
 // IE 8 opacity
@@ -33,6 +34,7 @@ var opacity = function(css, opts) {
 var src = {
     root: 'src',
     sass: 'src/sass/',
+    libsass: 'src/sass/lib/',
     js: 'src/js',
     img: 'src/img',
     svg: 'src/img/svg',
@@ -54,6 +56,7 @@ gulp.task('jade', function() {
         .pipe(jade({
             pretty: true
         }))
+        .pipe(htmlbeautify())
         .pipe(gulp.dest('build/'));
 });
 
@@ -95,7 +98,7 @@ gulp.task('sprite', function() {
     spriteData.img
         .pipe(gulp.dest(dest.img));
     spriteData.css
-        .pipe(gulp.dest(src.sass));
+        .pipe(gulp.dest(src.libsass));
 });
 
 // html includes
@@ -160,7 +163,7 @@ gulp.task('font', function() {
                     fontPath: 'fonts/',
                     className: 'icon'
                 }))
-                .pipe(gulp.dest('src/sass/'));
+                .pipe(gulp.dest('src/sass/lib/'));
             gulp.src('src/helpers/icons.html')
                 .pipe(consolidate('lodash', {
                     glyphs: glyphs,

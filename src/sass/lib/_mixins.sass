@@ -129,3 +129,18 @@ $browser-context: 16
 	-ms-text-overflow: ellipsis
 	text-overflow: ellipsis
 	white-space: nowrap
+
+=ratio($width, $height)
+	position: relative
+	&:before
+		display: block
+		content: ""
+		width: 100%
+		padding-top: ($height / $width) * 100%
+		
+=ratio-in
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
